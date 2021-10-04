@@ -15,23 +15,36 @@ import java.text.*;
  */
 public class Register extends javax.swing.JFrame {
 
+    public List<String> Checktext;
     /**
      * Creates new form Register
      */
     
     public Register() {
         initComponents();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = new java.util.Date();
+        String current = sdf.format(date);
+        jTextFieldCreateDate.setText(current);
+        
     }
     public boolean TextList()
     {
-        List<String> Checktext = new ArrayList<String>();{
-        jTextFieldUsername.getText(); jPasswordFieldPassword.getPassword(); jPasswordFieldPasswordReenter.getPassword(); jTextFieldFirstName.getText();
-        jTextFieldLastName.getText(); jDateChooserDOB.getDateFormatString(); jComboBoxUserType.getSelectedItem(); jTextFieldEmail.getText(); jTextFieldCreateDate.getText();
-    };
+        Checktext = new ArrayList<String>();{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date DOB = jDateChooserDOB.getDate();
+        String realDate = sdf.format(DOB);
+        Checktext.add(jTextFieldUsername.getText());
+        Checktext.add(jPasswordFieldPassword.getText().toString());
+        Checktext.add(jTextFieldFirstName.getText());
+        Checktext.add(jTextFieldLastName.getText());
+        Checktext.add(realDate);
+        Checktext.add(jComboBoxUserType.getSelectedItem().toString());
+        Checktext.add(jTextFieldEmail.getText());
+        Checktext.add(jTextFieldCreateDate.getText());
     for (String Check:Checktext)
     {
         if (Check == null || Check.isEmpty()){
-            JOptionPane.showMessageDialog(null, "All form spaces need to be filled in");
             return false;
         }
         else{
@@ -42,7 +55,7 @@ public class Register extends javax.swing.JFrame {
     return false;
         
     }
-
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,6 +136,13 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel8.setText("Email Address");
+
+        jTextFieldCreateDate.setForeground(new java.awt.Color(204, 204, 204));
+        jTextFieldCreateDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCreateDateActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Create Date");
 
@@ -214,21 +234,23 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        List<String> Checktext = new ArrayList<String>();{
-        JDateChooser DOB = new JDateChooser();
-        DateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
-        String date = sdf.format(jDateChooserDeadline.getDate());
-        Checktext.add(jTextFieldUsername.getText());
-        Checktext.add(jPasswordFieldPassword.getText().toString());
-        Checktext.add(jPasswordFieldPasswordReenter.getText().toString());
-        Checktext.add(jTextFieldFirstName.getText());
-        Checktext.add(jTextFieldLastName.getText());
-        Checktext.add(jDateChooserDOB.getDate().toString());
-        Checktext.add(jComboBoxUserType.getSelectedItem().toString());
-        Checktext.add(jTextFieldEmail.getText());
-        Checktext.add(jTextFieldCreateDate.getText());
-    };
-        JOptionPane.showMessageDialog(null,Checktext.toString());
+        try{
+        if (TextList()== false)
+        {
+            return;
+        }
+        else {
+            ConnectToDatabase.OpenConnection();
+            ConnectToDatabase.Add(Checktext);
+            
+        }
+        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
+        {
+            
+        
+    }
+    
+        
             
         
         
@@ -253,6 +275,14 @@ public class Register extends javax.swing.JFrame {
     private void jComboBoxUserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUserTypeActionPerformed
             // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxUserTypeActionPerformed
+
+    private void jTextFieldCreateDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCreateDateActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        java.util.Date date = new java.util.Date();
+        String current = sdf.format(date);
+        jTextFieldCreateDate.setText(current);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCreateDateActionPerformed
 
     /**
      * @param args the command line arguments

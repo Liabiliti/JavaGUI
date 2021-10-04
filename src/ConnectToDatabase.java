@@ -6,32 +6,44 @@
 import java.sql.*;
 import java.math.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Nicholas
  */
 public class ConnectToDatabase {
+    static Connection conn;
     
     public static void OpenConnection(){
     try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql;//localhost:3306/javauser", "root", "B!gB1ueBear");
+        
+        
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             
             
         }catch(Exception e){System.out.println(e);}
     }
     public static void CloseConnection(){
     try{
-        Connection conn = DriverManager.getConnection("jdbc:mysql;//localhost:3306/javauser", "root", "B!gB1ueBear");
+       
         conn.close();
         
     }catch(Exception e){System.out.println(e);}
     }
-    public static void Add(String sql){
+    public static void Add(List<String> AddList){
      try{
-        
-         Connection conn = DriverManager.getConnection("jdbc:mysql;//localhost:3306/javauser", "root", "B!gB1ueBear");
-         Statement myStmt = conn.createStatement();
-         myStmt.executeUpdate("INSERT INTO javauserdetails " + sql);
+         String sql = "INSERT INTO javauserdetails (Username, UserPassword, FirstName, LastName, DOB, UserType, EmailAddress, CreateDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+         PreparedStatement myStmt = conn.prepareStatement(sql);
+         for (int i = 0; i < 8; i++)
+         {
+             myStmt.setString((i + 1) ,AddList.toArray()[i].toString());
+             JOptionPane.showMessageDialog(null, AddList.toArray()[i].toString());
+         }
+         JOptionPane.showMessageDialog(null, myStmt);
+         
+         
+         //myStmt.setString(1, jTextFieldUsername.getText().toString());
+         
     }catch(Exception e){System.out.println(e);}
 }
 }
