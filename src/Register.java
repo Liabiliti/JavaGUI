@@ -16,6 +16,8 @@ import java.text.*;
 public class Register extends javax.swing.JFrame {
 
     public List<String> Checktext;
+    public List<String> Checkdate;
+    //public int i = 3;
     /**
      * Creates new form Register
      */
@@ -28,12 +30,15 @@ public class Register extends javax.swing.JFrame {
         jTextFieldCreateDate.setText(current);
         
     }
-    public boolean TextList()
-    {
+    public boolean TextList(){
+            
+    {   
+        
         Checktext = new ArrayList<String>();{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date DOB = jDateChooserDOB.getDate();
         String realDate = sdf.format(DOB);
+        //Checktext.add(Integer.valueOf(i).toString());
         Checktext.add(jTextFieldUsername.getText());
         Checktext.add(jPasswordFieldPassword.getText().toString());
         Checktext.add(jTextFieldFirstName.getText());
@@ -42,6 +47,7 @@ public class Register extends javax.swing.JFrame {
         Checktext.add(jComboBoxUserType.getSelectedItem().toString());
         Checktext.add(jTextFieldEmail.getText());
         Checktext.add(jTextFieldCreateDate.getText());
+        //i++;
     for (String Check:Checktext)
     {
         if (Check == null || Check.isEmpty()){
@@ -53,9 +59,31 @@ public class Register extends javax.swing.JFrame {
         
     }
     return false;
-        
     }
     }
+    }
+//     public boolean DateList()
+//    {
+//        Checkdate = new ArrayList<String>();{
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        java.util.Date DOB = jDateChooserDOB.getDate();
+//        String realDate = sdf.format(DOB);
+//        Checkdate.add(realDate);
+//        Checkdate.add(jTextFieldCreateDate.getText());
+//    for (String Check:Checkdate)
+//    {
+//        if (Check == null || Check.isEmpty()){
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
+//        
+//    }
+//    return false;
+//        
+//    }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,13 +263,14 @@ public class Register extends javax.swing.JFrame {
    
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         try{
-        if (TextList()== false)
+        if (TextList() == false)
         {
             return;
         }
         else {
             ConnectToDatabase.OpenConnection();
             ConnectToDatabase.Add(Checktext);
+            //ConnectToDatabase.AddDate(Checkdate);
             
         }
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
