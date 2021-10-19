@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-10-19T18:01:28</date>
+  <millis>1634626888929</millis>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>WARNING</level>
+  <class>LoginScreen</class>
+  <method>jButtonLoginActionPerformed</method>
+  <thread>16</thread>
+  <message>TEST</message>
+</record>
+</log>

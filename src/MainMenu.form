@@ -23,27 +23,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnNewUser" max="32767" attributes="0"/>
-                  <Component id="btnSearchUser" max="32767" attributes="0"/>
-                  <Component id="btnPoly" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnSerialization" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnFileProcessing" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnWorkingWithData" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnTextEditor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnEditDeleteUser" max="32767" attributes="0"/>
-                  <Component id="btnExit" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnNewUser" max="32767" attributes="0"/>
+                          <Component id="btnSearchUser" max="32767" attributes="0"/>
+                          <Component id="btnPoly" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnSerialization" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnFileProcessing" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnWorkingWithData" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTextEditor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEditDeleteUser" max="32767" attributes="0"/>
+                          <Component id="btnExit" min="-2" pref="217" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="label1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="112" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="label1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="btnPoly" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="btnSerialization" min="-2" max="-2" attributes="0"/>
@@ -61,7 +71,7 @@
               <Component id="btnNewUser" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnExit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,6 +86,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Working with Data Structure"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWorkingWithDataActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSerialization">
       <Properties>
@@ -86,16 +99,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Image File Processing"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFileProcessingActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSearchUser">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search User"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchUserActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNewUser">
       <Properties>
         <Property name="text" type="java.lang.String" value="New User"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewUserActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTextEditor">
       <Properties>
@@ -106,10 +128,24 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditDeleteUser">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit/Delete User"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditDeleteUserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Label" name="label1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>
     </Component>
   </SubComponents>

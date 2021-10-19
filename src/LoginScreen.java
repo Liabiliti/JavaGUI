@@ -1,3 +1,11 @@
+
+import java.sql.*;
+import java.math.*;
+import java.util.*;
+import javax.swing.*;
+import java.text.*;
+import java.util.logging.*;
+import java.util.logging.FileHandler;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,14 +17,33 @@
  * @author Nicholas
  */
 public class LoginScreen extends javax.swing.JFrame {
-
+    public List<String> loginList;
+    private static Logger x = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     /**
      * Creates new form LoginScreen
      */
     public LoginScreen() {
         initComponents();
     }
-
+    public boolean TextList(){ 
+         
+        loginList = new ArrayList<String>();{
+        loginList.add(jTextFieldUsername.getText());
+        loginList.add(jPasswordFieldPassword.getText().toString());
+    for (String Check:loginList)
+    {
+        if (Check == null || Check.isEmpty()){
+            return false;
+        }
+        else{
+            return true;
+        }
+        
+    }
+        return false;
+    }
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +56,10 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldUsername = new javax.swing.JTextField();
-        jTextFieldPassword = new javax.swing.JTextField();
         jButtonLogin = new javax.swing.JButton();
         jButtonRegister = new javax.swing.JButton();
         jTextFieldExit = new javax.swing.JButton();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,8 +101,8 @@ public class LoginScreen extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldUsername)
-                            .addComponent(jTextFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldPassword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jButtonLogin)
@@ -92,16 +119,16 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLogin)
                     .addComponent(jButtonRegister)
                     .addComponent(jTextFieldExit))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,15 +142,41 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jTextFieldExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldExitActionPerformed
-        // TODO add your handling code here:
+    System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldExitActionPerformed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        MainMenu mm = new MainMenu();
-        mm.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        try{ 
+            FileHandler Fh = new FileHandler("Dinosaur.txt");
+            Fh.setLevel(Level.ALL);
+            x.addHandler(Fh);
+            
+            
+        if ((jTextFieldUsername.getText().isEmpty())  && (jPasswordFieldPassword.getText().isEmpty()))
+        {
+            JOptionPane.showMessageDialog(null, "Both Username and Password must be filled");
+            return;
+        }
+        else{
+          
+            if (TextList()==false)
+            {
+                return;
+            }
+            else
+            {
+            ConnectToDatabase.OpenConnection();
+            ConnectToDatabase.Login(loginList);
+            ConnectToDatabase.CloseConnection();
+            
+            }
+        }x.log(Level.WARNING, "TEST");
+        
+        }catch(Exception e){JOptionPane.showMessageDialog(null, e); 
+        //x.log(Level.INFO, "TEST");
+     
     }//GEN-LAST:event_jButtonLoginActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
@@ -164,8 +217,8 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JButton jTextFieldExit;
-    private javax.swing.JTextField jTextFieldPassword;
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 }
