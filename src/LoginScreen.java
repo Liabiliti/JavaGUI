@@ -18,7 +18,7 @@ import java.util.logging.FileHandler;
  */
 public class LoginScreen extends javax.swing.JFrame {
     public List<String> loginList;
-    private static Logger x = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static Logger x = Logger.getLogger("LoginScreen");
     /**
      * Creates new form LoginScreen
      */

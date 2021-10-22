@@ -18,7 +18,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
     public List<String> Checktext;
     public List<String> Checkdate;
     public String Username;
-    public String pass;
+    public String Email;
     public String un;
     public String pf;
     public String fn; 
@@ -39,82 +39,13 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = new java.util.Date();
         String current = sdf.format(date);
-        jTextFieldCreateDate.setText(current); // sets 
-        jDateChooserDOB.setDate(date); // sets Calendar as default day
-        
-    }
-    public boolean TextList(){
-    {    
-         
-        Checktext = new ArrayList<String>();{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date DOB = jDateChooserDOB.getDate();
-        String realDate = sdf.format(DOB);
-        //Checktext.add(Integer.valueOf(i).toString());
-//        Checktext.add(jTextFieldUsername1.getText());
-//        Checktext.add(jPasswordFieldPassword.getText().toString());
-//        Checktext.add(jTextFieldFirstName.getText());
-//        Checktext.add(jTextFieldLastName.getText());
-//        Checktext.add(realDate);
-//        Checktext.add(jComboBoxUserType.getSelectedItem().toString());
-//        Checktext.add(jTextFieldEmail.getText());
-//        Checktext.add(jTextFieldCreateDate.getText());
-        String us = jTextFieldUsername1.getText();
-        String pf = jPasswordFieldPassword.getText().toString();
-        String fn = jTextFieldFirstName.getText();
-        String ln = jTextFieldLastName.getText();
-        String rd = realDate;
-        String cbut = jComboBoxUserType.getSelectedItem().toString();
-        String em = jTextFieldEmail.getText();
-        String cd = jTextFieldCreateDate.getText();
-        Checktext.add(us);
-        Checktext.add(pf);
-        Checktext.add(fn);
-        Checktext.add(ln);
-        Checktext.add(rd);
-        Checktext.add(cbut);
-        Checktext.add(em);
-        Checktext.add(cd);
-        //i++;
-    for (String Check:Checktext)
-    {
-        if (Check == null || Check.isEmpty()){
-            Check = "IsNull";
-        }
-        else{
-            return true;
-        }
-        
-    }
-    return false;
-    
-    }
-    }
+        jTextFieldCreateDate.setText(current); // sets textfield as current date
+        jDateChooserDOB.setDate(date); // sets Calendar as current day
     }
     
     
-//     public boolean DateList()
-//    {
-//        Checkdate = new ArrayList<String>();{
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        java.util.Date DOB = jDateChooserDOB.getDate();
-//        String realDate = sdf.format(DOB);
-//        Checkdate.add(realDate);
-//        Checkdate.add(jTextFieldCreateDate.getText());
-//    for (String Check:Checkdate)
-//    {
-//        if (Check == null || Check.isEmpty()){
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-//        
-//    }
-//    return false;
-//        
-//    }
-//    }
+    
+//   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,6 +76,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButtonDelete = new javax.swing.JButton();
         label1 = new java.awt.Label();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -217,6 +149,8 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(255, 0, 0));
         label1.setText("Cannot Update Username");
 
+        jLabel3.setText("OR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,44 +159,50 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldLastName)
-                                    .addComponent(jTextFieldFirstName)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateChooserDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldFirstName)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel9))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBoxUserType, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +210,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
                                 .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,32 +219,39 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(8, 8, 8)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(jComboBoxUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDateChooserDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jComboBoxUserType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9))))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonUpdate)
@@ -368,10 +315,10 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
      Username = jTextFieldUsername1.getText();
-     pass = jPasswordFieldPassword.getText();
+     Email = jTextFieldEmail.getText();
         try{
             ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Delete(Username, pass);
+            ConnectToDatabase.Delete(Username, Email);
             ConnectToDatabase.CloseConnection();
         
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
@@ -424,6 +371,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

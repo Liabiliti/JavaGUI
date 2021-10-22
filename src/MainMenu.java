@@ -40,6 +40,11 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnPoly.setText("Polymorphism and Text File Processing");
+        btnPoly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPolyActionPerformed(evt);
+            }
+        });
 
         btnWorkingWithData.setText("Working with Data Structure");
         btnWorkingWithData.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +180,13 @@ public class MainMenu extends javax.swing.JFrame {
     ww.setVisible(true);
     this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnFileProcessingActionPerformed
+
+    private void btnPolyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPolyActionPerformed
+        PolyExample pe = new PolyExample();
+        pe.setVisible(true);
+        this.setVisible(false);
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnPolyActionPerformed
 
     /**
      * @param args the command line arguments

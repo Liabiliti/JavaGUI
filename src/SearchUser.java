@@ -38,8 +38,8 @@ public class SearchUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldUsernameSearch = new javax.swing.JTextField();
-        jTextFieldEmailSearch = new javax.swing.JTextField();
+        jTextFieldFirstNameSearch = new javax.swing.JTextField();
+        jTextFieldLastNameSearch = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonSearch = new javax.swing.JButton();
@@ -48,12 +48,14 @@ public class SearchUser extends javax.swing.JFrame {
         jButtonSearch1 = new javax.swing.JButton();
         jButtonReturn = new javax.swing.JButton();
         label1 = new java.awt.Label();
+        jTextFieldCreateDateSearch = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username");
+        jLabel1.setText("First Name");
 
-        jLabel2.setText("Email");
+        jLabel2.setText("Last Name");
 
         jButtonSearch.setText("Show All");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +91,8 @@ public class SearchUser extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         label1.setText("Search Users");
 
+        jLabel3.setText("Create Date");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,20 +101,26 @@ public class SearchUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldUsernameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldFirstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldEmailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldCreateDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
                                 .addComponent(jButtonSearch1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonSearch)
@@ -126,13 +136,16 @@ public class SearchUser extends javax.swing.JFrame {
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldUsernameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFirstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jButtonSearch)
                     .addComponent(jButtonSearch1)
-                    .addComponent(jButtonReturn))
+                    .addComponent(jButtonReturn)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldCreateDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -147,8 +160,8 @@ public class SearchUser extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             ResultSet rs;
             DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-            String username = jTextFieldUsernameSearch.toString();
-            String emailAddress = jTextFieldEmailSearch.toString();
+            String username = jTextFieldFirstNameSearch.toString();
+            String emailAddress = jTextFieldLastNameSearch.toString();
             String search = "SELECT * FROM javauserdetails"; //WHERE Username='" + username + "' and " + "EmailAddress='" + emailAddress + "';";
             Statement myStmt = conn.createStatement();
             rs = myStmt.executeQuery(search);
@@ -173,9 +186,9 @@ public class SearchUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearch1ActionPerformed
-        if ((jTextFieldUsernameSearch.getText() == null)  && (jTextFieldEmailSearch.getText()) == null)
+        if ((jTextFieldFirstNameSearch.getText() == null)  && (jTextFieldLastNameSearch.getText()) == null)
         {
-            JOptionPane.showMessageDialog(null, "Both Username and EmailAddress must be filled");
+            JOptionPane.showMessageDialog(null, "Either Username or EmailAddress must be filled");
             return;
         }
         else{
@@ -183,9 +196,10 @@ public class SearchUser extends javax.swing.JFrame {
         try{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             ResultSet rs;
-            String username = jTextFieldUsernameSearch.getText();
-            String emailAddress = jTextFieldEmailSearch.getText();
-            String search = "SELECT * FROM javauserdetails WHERE Username='" + username + "' OR EmailAddress='" + emailAddress + "';";
+            String firstName = jTextFieldFirstNameSearch.getText();
+            String lastName = jTextFieldLastNameSearch.getText();
+            String createDate = jTextFieldCreateDateSearch.getText();
+            String search = "SELECT * FROM javauserdetails WHERE FirstName='" + firstName + "' OR LastName='" + lastName + "' OR CreateDate='" + createDate + "';";
             Statement myStmt = conn.createStatement();
             rs = myStmt.executeQuery(search);
             while (rs.next()){
@@ -259,10 +273,12 @@ public class SearchUser extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSearch1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSearch;
-    private javax.swing.JTextField jTextFieldEmailSearch;
-    private javax.swing.JTextField jTextFieldUsernameSearch;
+    private javax.swing.JTextField jTextFieldCreateDateSearch;
+    private javax.swing.JTextField jTextFieldFirstNameSearch;
+    private javax.swing.JTextField jTextFieldLastNameSearch;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

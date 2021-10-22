@@ -56,19 +56,11 @@ public class ConnectToDatabase extends Register{
          myStmt.setString(7, AddList.toArray()[6].toString());
          myStmt.setDate(8, setDate2);
          
-         
-//         for (int i = 0; i < 6; i++)
-//         {
-//             myStmt.setString((i + 1) ,AddList.toArray()[i].toString());
-//         }
          int rowsInserted = myStmt.executeUpdate();
          if (rowsInserted > 0){
              JOptionPane.showMessageDialog(null, "New User Added Succesfully");
          }
-         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         //java.util.Date parsed = format.parse("20111230");
-         //java.sql.Date sq1 = new java.sql.Date(parsed.getTime());
-         //myStmt.setDate(0, sq1);
+        
          
         
          
@@ -97,41 +89,7 @@ public class ConnectToDatabase extends Register{
         
     }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
 }
-//    public static void Search(List<String> SearchList){
-//        try{
-//            String username = SearchList.toArray()[0].toString();
-//            String emailAddress = SearchList.toArray()[6].toString();
-//            String search = "SELECT * FROM javauserdetails WHERE Username='" + username + "' and " + "EmailAddress='" + emailAddress + "';";
-//            Statement myStmt = conn.createStatement();
-//            rs = myStmt.executeQuery(search);
-//            jTableSearch
-//            
-//        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
-//    }
-//    public static void AddDate(List<String> AddDate){
-//        int i = 1;
-//     try{
-//         String sql = "INSERT INTO javauserdetails VALUES (1, ?, ?)";
-//         PreparedStatement myStmt = conn.prepareStatement(sql);
-//         for (String date: AddDate)
-//         {
-//         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//         java.util.Date parsed = format.parse(date);
-//         java.sql.Date datesql = new java.sql.Date(parsed.getTime());
-//         myStmt.setDate(i, datesql);
-//         i++;
-//         }
-//         int rowsInserted = myStmt.executeUpdate();
-//         if (rowsInserted > 0){
-//             JOptionPane.showMessageDialog(null, "New Dates Added Succesfully");
-//         }
-//         
-//         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//         //java.util.Date parsed = format.parse("20111230");
-//         //java.sql.Date sq1 = new java.sql.Date(parsed.getTime());
-//         //myStmt.setDate(0, sq1);  
-//    }catch(Exception e){System.out.println(e);}
-//    }
+
      public static void Update(String us, String pf, String fn, String ln, String rd, String cbut, String em, String cd){
     //Logger x = ConnectToDatabase.setLogger("updateLog.txt");
          try{
@@ -141,7 +99,7 @@ public class ConnectToDatabase extends Register{
          java.util.Date parsed2 = format.parse(cd);
          java.sql.Date setDate2 = new java.sql.Date(parsed2.getTime());
     
-         sq = "UPDATE javauserdetails SET"; //UserPassword='" + pf + "', FirstName='" + fn + "', LastName='" + ln +"', DOB='" + setDate + "', UserType='" + cbut + "', EmailAddress='" + em + "', CreateDate='" + setDate2 + "' WHERE Username='" + us +"'";
+         sq = "UPDATE javauserdetails SET"; 
          if (pf.isEmpty() == false && pf != null)
          {
              sq = sq + " UserPassword='" + pf;
@@ -162,13 +120,13 @@ public class ConnectToDatabase extends Register{
          {
              sq = sq + "', UserType='" + cbut;
          }
-         if (em.isEmpty() == false && em != null)
-         {
-             sq = sq + "', EmailAddress='" + em;
-         }
+//         if (em.isEmpty() == false && em != null)
+//         {
+//             sq = sq + "', EmailAddress='" + em;
+//         }
          if (cd.isEmpty() == false && cd != null)
          {
-             sq = sq + "', CreateDate='" + setDate2 + "' WHERE Username='" + us +"';";
+             sq = sq + "', CreateDate='" + setDate2 + "' WHERE Username='" + us +"' OR EmailAddress='" + em +"';";
          }
          if ((sq.indexOf(",") == 27 && sq.indexOf("'") == 26))
          {
@@ -182,17 +140,13 @@ public class ConnectToDatabase extends Register{
          if (rowsInserted > 0){
              JOptionPane.showMessageDialog(null, "User Updated Succesfully");
          }
-         //x.log(Level.INFO, "Error Report");
-         //SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-         //java.util.Date parsed = format.parse("20111230");
-         //java.sql.Date sq1 = new java.sql.Date(parsed.getTime());
-         //myStmt.setDate(0, sq1);
+         
     }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
     //{x.log(Level.WARNING, "Error testing connection", e);}
 }
      public static void Delete(String us, String up){
          try{
-         String sql = "DELETE FROM javauserdetails WHERE Username=? AND UserPassword=?";
+         String sql = "DELETE FROM javauserdetails WHERE Username=? OR EmailAddress=?";
          PreparedStatement myStmt = conn.prepareStatement(sql);
          myStmt.setString(1, us);
           myStmt.setString(2, up);
