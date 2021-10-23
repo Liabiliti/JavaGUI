@@ -151,6 +151,10 @@ public class ConnectToDatabase extends Register{
          if (rowsInserted > 0){
              JOptionPane.showMessageDialog(null, "User Updated Succesfully");
          }
+         else 
+         {
+            JOptionPane.showMessageDialog(null, "User was unable to be deleted, are you sure you have the right Email/Username?");
+         }
          
     }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
     //{x.log(Level.WARNING, "Error testing connection", e);}
@@ -168,7 +172,7 @@ public class ConnectToDatabase extends Register{
          else{
              JOptionPane.showMessageDialog(null, "User was unable to be deleted");
          }
-         }catch (Exception e){JOptionPane.showMessageDialog(null, "Unable to delete");}
+         }catch (Exception e){JOptionPane.showMessageDialog(null, "Unable to delete, are you sure you have the right Email/Username?");}
      }
      public static Logger setLogger (String FileName)
      {

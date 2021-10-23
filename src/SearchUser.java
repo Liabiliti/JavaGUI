@@ -186,10 +186,9 @@ public class SearchUser extends javax.swing.JFrame {
         String current = sdf.format(date);
         
         try{
-//            SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+            
               String SearchCriteria = jTextFieldSearchCriteria.getText();
-//            java.util.Date createDate = fm.parse(SearchCriteria);
-//            createDate.toString();
+
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             ResultSet rs;
             if (jTextFieldSearchCriteria.getText().isEmpty() == true)
@@ -226,7 +225,6 @@ public class SearchUser extends javax.swing.JFrame {
                 //JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");
                 break;
             }
-            
             Statement myStmt = conn.createStatement();
             rs = myStmt.executeQuery(search);
             DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
@@ -242,123 +240,17 @@ public class SearchUser extends javax.swing.JFrame {
                 String ea = rs.getString("EmailAddress");
                 String cd = String.valueOf(rs.getDate("CreateDate"));
                 String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-                
-                //DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-                //dtModel.setRowCount(0);
                 dtModel.addRow(tabledata);
-                
-                            }
-
-    
-//            if (jComboBoxSearch.getSelectedItem().toString() == "First Name")
-//            {
-//            String search = "SELECT * FROM javauserdetails WHERE FirstName='" + SearchCriteria + "';";
-//            Statement myStmt = conn.createStatement();
-//            JOptionPane.showMessageDialog(null, search);
-//            rs = myStmt.executeQuery(search);
-//            DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-//            dtModel.setRowCount(0);
-//            while (rs.next()){
-//                String uid = String.valueOf(rs.getInt("UserID"));
-//                String un = rs.getString("Username");
-//                String pw = rs.getString("UserPassword");
-//                String fn = rs.getString("FirstName");
-//                String ln = rs.getString("LastName");
-//                String dob = String.valueOf(rs.getDate("DOB"));
-//                String ut = rs.getString("UserType");
-//                String ea = rs.getString("EmailAddress");
-//                String cd = String.valueOf(rs.getDate("CreateDate"));
-//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-//                
-//                //DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-//                //dtModel.setRowCount(0);
-//                dtModel.addRow(tabledata);
-//                            }
-//            }
-//            if (jComboBoxSearch.getSelectedItem().toString() == "Last Name")
-//            {   
-//            String search = "SELECT * FROM javauserdetails WHERE LastName='" + SearchCriteria + "';";
-//            Statement myStmt = conn.createStatement();
-//            JOptionPane.showMessageDialog(null, search);
-//            rs = myStmt.executeQuery(search);
-//            while (rs.next()){
-//               
-//                String uid = String.valueOf(rs.getInt("UserID"));
-//                String un = rs.getString("Username");
-//                String pw = rs.getString("UserPassword");
-//                String fn = rs.getString("FirstName");
-//                String ln = rs.getString("LastName");
-//                String dob = String.valueOf(rs.getDate("DOB"));
-//                String ut = rs.getString("UserType");
-//                String ea = rs.getString("EmailAddress");
-//                String cd = String.valueOf(rs.getDate("CreateDate"));
-//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-//                
-//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-//                dtModel.setRowCount(0);
-//                dtModel.addRow(tabledata);
-//           
-//                            }
-//            
-//            
-//            }
-//             else if (jComboBoxSearch.getSelectedItem().toString() == "Create Date")
-//             {
-//                   String search = "SELECT * FROM javauserdetails WHERE CreateDate='" + SearchCriteria + "';";
-//            Statement myStmt = conn.createStatement();
-//            JOptionPane.showMessageDialog(null, search);
-//            rs = myStmt.executeQuery(search);
-//            while (rs.next()){
-//                String uid = String.valueOf(rs.getInt("UserID"));
-//                String un = rs.getString("Username");
-//                String pw = rs.getString("UserPassword");
-//                String fn = rs.getString("FirstName");
-//                String ln = rs.getString("LastName");
-//                String dob = String.valueOf(rs.getDate("DOB"));
-//                String ut = rs.getString("UserType");
-//                String ea = rs.getString("EmailAddress");
-//                String cd = String.valueOf(rs.getDate("CreateDate"));
-//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-//                
-//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-//                dtModel.setRowCount(0);
-//                dtModel.addRow(tabledata);
-//           
-//            
-//                    
-//            
-//                            }       
-        //}
-//            String search = "SELECT * FROM javauserdetails WHERE (FirstName='" + firstName + "' OR LastName='" + lastName + "' OR CreateDate='" + setDate + "');";
-//            Statement myStmt = conn.createStatement();
-//            JOptionPane.showMessageDialog(null, search);
-//            rs = myStmt.executeQuery(search);
-//            while (rs.next()){
-//                String uid = String.valueOf(rs.getInt("UserID"));
-//                String un = rs.getString("Username");
-//                String pw = rs.getString("UserPassword");
-//                String fn = rs.getString("FirstName");
-//                String ln = rs.getString("LastName");
-//                String dob = String.valueOf(rs.getDate("DOB"));
-//                String ut = rs.getString("UserType");
-//                String ea = rs.getString("EmailAddress");
-//                String cd = String.valueOf(rs.getDate("CreateDate"));
-//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-//                
-//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-//                dtModel.setRowCount(0);
-//                dtModel.addRow(tabledata);
-           
-        
-                    
-//}
+            }
+            if (dtModel.getRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "No entries match the Search Box input");
+            }
             
             
-           
-        
         }catch(SQLException e) {JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");}
         
-        catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
+         catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
         // TODO add your handling code here:
 
                                                    // TODO add your handling code here:

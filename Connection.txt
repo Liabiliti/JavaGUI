@@ -2,14 +2,14 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-10-24T08:14:33</date>
-  <millis>1635023673403</millis>
-  <sequence>0</sequence>
+  <date>2021-10-24T08:55:34</date>
+  <millis>1635026134477</millis>
+  <sequence>2</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>ConnectToDatabase</class>
   <method>OpenConnection</method>
-  <thread>16</thread>
+  <thread>15</thread>
   <message>Connection Completed</message>
 </record>
 </log>
