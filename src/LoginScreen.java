@@ -147,12 +147,12 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try{ 
-            FileHandler Fh = new FileHandler("Dinosaur.txt");
+            FileHandler Fh = new FileHandler("Login.txt");
             Fh.setLevel(Level.ALL);
             x.addHandler(Fh);
             
             
-        if ((jTextFieldUsername.getText().isEmpty())  && (jPasswordFieldPassword.getText().isEmpty()))
+        if ((jTextFieldUsername.getText().isEmpty())  || (jPasswordFieldPassword.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Both Username and Password must be filled");
             return;
@@ -170,7 +170,9 @@ public class LoginScreen extends javax.swing.JFrame {
             ConnectToDatabase.CloseConnection();
             
             }
-        }x.log(Level.WARNING, "TEST");
+        }x.log(Level.INFO, "Login Logged");
+       
+        this.setVisible(false);
         
         }catch(Exception e){JOptionPane.showMessageDialog(null, e); 
         //x.log(Level.INFO, "TEST");

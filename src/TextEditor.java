@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import javax.swing.*;
+import java.io.*;
 /**
  *
  * @author Nicholas
  */
 public class TextEditor extends javax.swing.JFrame {
-
+ public String filePath;
     /**
      * Creates new form TextEditor
      */
@@ -50,22 +51,47 @@ public class TextEditor extends javax.swing.JFrame {
 
         jMenuItemNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemNew.setText("New");
+        jMenuItemNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNewActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemNew);
 
         jMenuItemOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemOpen.setText("Open");
+        jMenuItemOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemOpenActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemOpen);
 
         jMenuItemSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemSave.setText("Save");
+        jMenuItemSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSaveActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemSave);
 
         jMenuItemSaveAs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
         jMenuItemSaveAs.setText("Save As");
+        jMenuItemSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSaveAsActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemSaveAs);
 
         jMenuItemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemExit.setText("Exit");
+        jMenuItemExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExitActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemExit);
 
         jMenuBar1.add(jMenu1);
@@ -104,6 +130,11 @@ public class TextEditor extends javax.swing.JFrame {
         jMenu3.setText("Help");
 
         jMenuItemAbout.setText("About");
+        jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItemAbout);
 
         jMenuBar1.add(jMenu3);
@@ -141,6 +172,102 @@ public class TextEditor extends javax.swing.JFrame {
     private void jMenuItemPasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPasteActionPerformed
     jEditorPane1.paste();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemPasteActionPerformed
+
+    private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        filePath = f.getAbsolutePath();
+        try {
+            FileReader reader = new FileReader(filename);
+            BufferedReader br = new BufferedReader(reader);
+            jEditorPane1.read(br, null);
+            
+            br.close();
+            jEditorPane1.requestFocus();
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error was: " + e);
+        }
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemOpenActionPerformed
+
+    private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
+    MainMenu mm = new MainMenu();
+    mm.setVisible(true);
+    this.setVisible(false);
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemExitActionPerformed
+
+    private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showSaveDialog(this);
+        File f = new File(chooser.getSelectedFile()+".rtf");
+        try{
+        FileWriter fw = new FileWriter(f);
+        String fileSaveName = jEditorPane1.getText();
+        fw.write(fileSaveName);
+        fw.close();
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error was: " + e);
+        }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemSaveAsActionPerformed
+
+    private void jMenuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewActionPerformed
+        int result = JOptionPane.showConfirmDialog(rootPane, "Do you want to save before creating new document?", "New File", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+           if (result == JOptionPane.YES_OPTION)
+           {
+        JFileChooser chooser = new JFileChooser();
+        chooser.showSaveDialog(this);
+        File f = chooser.getSelectedFile();
+        try{
+        FileWriter fw = new FileWriter(f);
+        String fileSaveName = jEditorPane1.getText();
+        fw.write(fileSaveName);
+        fw.close();
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error was: " + e);
+        }
+           }
+           else if (result == JOptionPane.NO_OPTION)
+           {
+               jEditorPane1.setText("");
+           }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemNewActionPerformed
+
+    private void jMenuItemSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveActionPerformed
+      
+         try{
+             FileWriter fw = new FileWriter(filePath, false);
+             BufferedWriter bw = new BufferedWriter(fw);
+             String fileSave = jEditorPane1.getText();
+             bw.write(fileSave);
+             bw.newLine();
+             bw.close();
+             
+         }catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "This is the first time you are saving this document, you will need to use the Save As tool");
+         }
+
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemSaveActionPerformed
+
+    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
+        JOptionPane.showMessageDialog(null, "This is a Text Editor which allows you to: \n New: This opens a new text editor \n Open: This allows you to open previous files created in text editor \n Save: This allows you to save an already existing file "
+                + "\n Save As: This will allow you to save a new text file \n Cut: This allows you to copy and delete text at the same time \n Copy: This allows you to copy text \n Paste: This allows you to paste the text you copied");
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     /**
      * @param args the command line arguments

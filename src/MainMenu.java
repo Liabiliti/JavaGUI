@@ -54,6 +54,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnSerialization.setText("Serialization and Deserialization");
+        btnSerialization.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSerializationActionPerformed(evt);
+            }
+        });
 
         btnFileProcessing.setText("Image File Processing");
         btnFileProcessing.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +82,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnTextEditor.setText("Text Editor");
+        btnTextEditor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTextEditorActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +122,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(btnWorkingWithData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnTextEditor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEditDeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(110, 110, 110))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,11 +192,24 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFileProcessingActionPerformed
 
     private void btnPolyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPolyActionPerformed
-        PolyExample pe = new PolyExample();
-        pe.setVisible(true);
+        PolyRealGUI prg = new PolyRealGUI();
+        prg.setVisible(true);
         this.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnPolyActionPerformed
+
+    private void btnSerializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerializationActionPerformed
+        PolyExample pe = new PolyExample();
+        pe.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSerializationActionPerformed
+
+    private void btnTextEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTextEditorActionPerformed
+    TextEditor te = new TextEditor();
+    te.setVisible(true);
+    this.setVisible(false);
+    // TODO add your handling code here:
+    }//GEN-LAST:event_btnTextEditorActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,6 +8,8 @@ import java.util.*;
 import javax.swing.*;
 import java.text.*;
 import javax.swing.table.*;
+import java.text.SimpleDateFormat;
+
 /**
 
 /*
@@ -21,7 +23,7 @@ import javax.swing.table.*;
  * @author Nicholas
  */
 public class SearchUser extends javax.swing.JFrame {
-
+    public String search;
     /**
      * Creates new form SearchUser
      */
@@ -38,24 +40,20 @@ public class SearchUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldFirstNameSearch = new javax.swing.JTextField();
-        jTextFieldLastNameSearch = new javax.swing.JTextField();
+        jTextFieldSearchCriteria = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButtonSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSearch = new javax.swing.JTable();
         jButtonSearch1 = new javax.swing.JButton();
         jButtonReturn = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        jTextFieldCreateDateSearch = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jComboBoxSearch = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("First Name");
-
-        jLabel2.setText("Last Name");
+        jLabel1.setText("Search Box");
 
         jButtonSearch.setText("Show All");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -91,61 +89,56 @@ public class SearchUser extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         label1.setText("Search Users");
 
-        jLabel3.setText("Create Date");
+        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Criteria", "First Name", "Last Name", "Create Date" }));
+        jComboBoxSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Search Criteria");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                        .addComponent(jComboBoxSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldSearchCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSearch1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSearch)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonReturn))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldFirstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldCreateDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jButtonSearch1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonSearch)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonReturn)))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFirstNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSearchCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
                     .addComponent(jButtonSearch)
                     .addComponent(jButtonSearch1)
                     .addComponent(jButtonReturn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldCreateDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jComboBoxSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -160,8 +153,7 @@ public class SearchUser extends javax.swing.JFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             ResultSet rs;
             DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-            String username = jTextFieldFirstNameSearch.toString();
-            String emailAddress = jTextFieldLastNameSearch.toString();
+          
             String search = "SELECT * FROM javauserdetails"; //WHERE Username='" + username + "' and " + "EmailAddress='" + emailAddress + "';";
             Statement myStmt = conn.createStatement();
             rs = myStmt.executeQuery(search);
@@ -180,28 +172,65 @@ public class SearchUser extends javax.swing.JFrame {
                 dtModel.addRow(tabledata);
             }
             
-            
+        
             
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearch1ActionPerformed
-        if ((jTextFieldFirstNameSearch.getText() == null)  && (jTextFieldLastNameSearch.getText()) == null)
-        {
-            JOptionPane.showMessageDialog(null, "Either Username or EmailAddress must be filled");
-            return;
-        }
-        else{
+        
+        
+        int s = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = new java.util.Date();
+        String current = sdf.format(date);
         
         try{
+//            SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+              String SearchCriteria = jTextFieldSearchCriteria.getText();
+//            java.util.Date createDate = fm.parse(SearchCriteria);
+//            createDate.toString();
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             ResultSet rs;
-            String firstName = jTextFieldFirstNameSearch.getText();
-            String lastName = jTextFieldLastNameSearch.getText();
-            String createDate = jTextFieldCreateDateSearch.getText();
-            String search = "SELECT * FROM javauserdetails WHERE FirstName='" + firstName + "' OR LastName='" + lastName + "' OR CreateDate='" + createDate + "';";
+            if (jTextFieldSearchCriteria.getText().isEmpty() == true)
+            {
+                JOptionPane.showMessageDialog(null, "The search box needs to be filled");
+                return;
+            }
+            
+            //String SearchCriteria = jTextFieldSearchCriteria.getText();
+            if (jComboBoxSearch.getSelectedItem().toString() == "Choose Criteria")
+            {
+                JOptionPane.showMessageDialog(null, "Not an eligible search criteria");
+                return;
+            }
+            if (jComboBoxSearch.getSelectedItem().toString() == "First Name")
+            {
+                s = 1;
+            }
+            
+            else if (jComboBoxSearch.getSelectedItem().toString() == "Last Name")
+            {
+                s = 2;
+            }
+            else if (jComboBoxSearch.getSelectedItem().toString() == "Create Date")
+            {
+                s = 3;
+            }
+            switch (s){
+                case 1: search = "SELECT * FROM javauserdetails WHERE FirstName='" + SearchCriteria + "';";
+                break;
+                case 2: search = "SELECT * FROM javauserdetails WHERE LastName='" + SearchCriteria + "';";
+                break;
+                case 3: search = "SELECT * FROM javauserdetails WHERE CreateDate='" + SearchCriteria + "';";
+                //JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");
+                break;
+            }
+            
             Statement myStmt = conn.createStatement();
             rs = myStmt.executeQuery(search);
+            DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+            dtModel.setRowCount(0);
             while (rs.next()){
                 String uid = String.valueOf(rs.getInt("UserID"));
                 String un = rs.getString("Username");
@@ -214,15 +243,124 @@ public class SearchUser extends javax.swing.JFrame {
                 String cd = String.valueOf(rs.getDate("CreateDate"));
                 String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
                 
-                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-                dtModel.setRowCount(0);
+                //DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+                //dtModel.setRowCount(0);
                 dtModel.addRow(tabledata);
-            }
+                
+                            }
+
+    
+//            if (jComboBoxSearch.getSelectedItem().toString() == "First Name")
+//            {
+//            String search = "SELECT * FROM javauserdetails WHERE FirstName='" + SearchCriteria + "';";
+//            Statement myStmt = conn.createStatement();
+//            JOptionPane.showMessageDialog(null, search);
+//            rs = myStmt.executeQuery(search);
+//            DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+//            dtModel.setRowCount(0);
+//            while (rs.next()){
+//                String uid = String.valueOf(rs.getInt("UserID"));
+//                String un = rs.getString("Username");
+//                String pw = rs.getString("UserPassword");
+//                String fn = rs.getString("FirstName");
+//                String ln = rs.getString("LastName");
+//                String dob = String.valueOf(rs.getDate("DOB"));
+//                String ut = rs.getString("UserType");
+//                String ea = rs.getString("EmailAddress");
+//                String cd = String.valueOf(rs.getDate("CreateDate"));
+//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
+//                
+//                //DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+//                //dtModel.setRowCount(0);
+//                dtModel.addRow(tabledata);
+//                            }
+//            }
+//            if (jComboBoxSearch.getSelectedItem().toString() == "Last Name")
+//            {   
+//            String search = "SELECT * FROM javauserdetails WHERE LastName='" + SearchCriteria + "';";
+//            Statement myStmt = conn.createStatement();
+//            JOptionPane.showMessageDialog(null, search);
+//            rs = myStmt.executeQuery(search);
+//            while (rs.next()){
+//               
+//                String uid = String.valueOf(rs.getInt("UserID"));
+//                String un = rs.getString("Username");
+//                String pw = rs.getString("UserPassword");
+//                String fn = rs.getString("FirstName");
+//                String ln = rs.getString("LastName");
+//                String dob = String.valueOf(rs.getDate("DOB"));
+//                String ut = rs.getString("UserType");
+//                String ea = rs.getString("EmailAddress");
+//                String cd = String.valueOf(rs.getDate("CreateDate"));
+//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
+//                
+//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+//                dtModel.setRowCount(0);
+//                dtModel.addRow(tabledata);
+//           
+//                            }
+//            
+//            
+//            }
+//             else if (jComboBoxSearch.getSelectedItem().toString() == "Create Date")
+//             {
+//                   String search = "SELECT * FROM javauserdetails WHERE CreateDate='" + SearchCriteria + "';";
+//            Statement myStmt = conn.createStatement();
+//            JOptionPane.showMessageDialog(null, search);
+//            rs = myStmt.executeQuery(search);
+//            while (rs.next()){
+//                String uid = String.valueOf(rs.getInt("UserID"));
+//                String un = rs.getString("Username");
+//                String pw = rs.getString("UserPassword");
+//                String fn = rs.getString("FirstName");
+//                String ln = rs.getString("LastName");
+//                String dob = String.valueOf(rs.getDate("DOB"));
+//                String ut = rs.getString("UserType");
+//                String ea = rs.getString("EmailAddress");
+//                String cd = String.valueOf(rs.getDate("CreateDate"));
+//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
+//                
+//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+//                dtModel.setRowCount(0);
+//                dtModel.addRow(tabledata);
+//           
+//            
+//                    
+//            
+//                            }       
+        //}
+//            String search = "SELECT * FROM javauserdetails WHERE (FirstName='" + firstName + "' OR LastName='" + lastName + "' OR CreateDate='" + setDate + "');";
+//            Statement myStmt = conn.createStatement();
+//            JOptionPane.showMessageDialog(null, search);
+//            rs = myStmt.executeQuery(search);
+//            while (rs.next()){
+//                String uid = String.valueOf(rs.getInt("UserID"));
+//                String un = rs.getString("Username");
+//                String pw = rs.getString("UserPassword");
+//                String fn = rs.getString("FirstName");
+//                String ln = rs.getString("LastName");
+//                String dob = String.valueOf(rs.getDate("DOB"));
+//                String ut = rs.getString("UserType");
+//                String ea = rs.getString("EmailAddress");
+//                String cd = String.valueOf(rs.getDate("CreateDate"));
+//                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
+//                
+//                DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+//                dtModel.setRowCount(0);
+//                dtModel.addRow(tabledata);
+           
+        
+                    
+//}
+            
             
            
-            
-        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
-        }// TODO add your handling code here:
+        
+        }catch(SQLException e) {JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");}
+        
+        catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
+        // TODO add your handling code here:
+
                                                    // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSearch1ActionPerformed
 
@@ -231,6 +369,10 @@ public class SearchUser extends javax.swing.JFrame {
     mm.setVisible(true);
     this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButtonReturnActionPerformed
+
+    private void jComboBoxSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,14 +413,12 @@ public class SearchUser extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButtonSearch1;
+    private javax.swing.JComboBox<String> jComboBoxSearch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSearch;
-    private javax.swing.JTextField jTextFieldCreateDateSearch;
-    private javax.swing.JTextField jTextFieldFirstNameSearch;
-    private javax.swing.JTextField jTextFieldLastNameSearch;
+    private javax.swing.JTextField jTextFieldSearchCriteria;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

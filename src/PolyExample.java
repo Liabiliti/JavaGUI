@@ -139,7 +139,7 @@ public class PolyExample extends javax.swing.JFrame {
         FileOutputStream output = null;
         ObjectOutputStream objOutput = null;
         
-            output = new FileOutputStream("C:\\Users\\Nicholas\\OneDrive\\Documents\\NetBeansProjects\\JavaGUI\\ot.ser");
+            output = new FileOutputStream("SerializeandDeserialize.ser");
             objOutput = new ObjectOutputStream(output);
             objOutput.writeObject(itemObject);
             output.close();
@@ -159,7 +159,7 @@ public class PolyExample extends javax.swing.JFrame {
         ObjectInputStream objInfile = null;
         try
         {
-            infile = new FileInputStream("C:\\Users\\Nicholas\\OneDrive\\Documents\\NetBeansProjects\\JavaGUI\\ot.ser");
+            infile = new FileInputStream("SerializeandDeserialize.ser");
             objInfile = new ObjectInputStream(infile);
             itm = (Item)objInfile.readObject();
 

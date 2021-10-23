@@ -36,7 +36,7 @@
                           <Component id="btnWorkingWithData" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnTextEditor" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnEditDeleteUser" max="32767" attributes="0"/>
-                          <Component id="btnExit" min="-2" pref="217" max="-2" attributes="0"/>
+                          <Component id="btnExit" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                   </Group>
@@ -97,6 +97,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Serialization and Deserialization"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSerializationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFileProcessing">
       <Properties>
@@ -126,6 +129,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Text Editor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTextEditorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>

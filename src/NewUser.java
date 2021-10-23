@@ -31,9 +31,10 @@ public class NewUser extends javax.swing.JFrame {
         
     }
     public boolean TextList(){
-            
-    {     
-        Checktext = new ArrayList<String>();{
+    
+    {   
+        Checktext = new ArrayList<String>();
+        {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date DOB = jDateChooserDOB.getDate();
         String realDate = sdf.format(DOB);
@@ -60,29 +61,9 @@ public class NewUser extends javax.swing.JFrame {
     return false;
     }
     }
+    
     }
-//     public boolean DateList()
-//    {
-//        Checkdate = new ArrayList<String>();{
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        java.util.Date DOB = jDateChooserDOB.getDate();
-//        String realDate = sdf.format(DOB);
-//        Checkdate.add(realDate);
-//        Checkdate.add(jTextFieldCreateDate.getText());
-//    for (String Check:Checkdate)
-//    {
-//        if (Check == null || Check.isEmpty()){
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-//        
-//    }
-//    return false;
-//        
-//    }
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,32 +252,34 @@ public class NewUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        try{
-        if (TextList() == false)
+        String p = new String(jPasswordFieldPassword.getPassword());
+        String pr = new String(jPasswordFieldPasswordReenter.getPassword());
+        if (p.equals(pr) == false)
         {
+            
+            JOptionPane.showMessageDialog(null, "Passwords do not match");
             return;
         }
+        try{
+             if (TextList() == false)
+            {
+                return;
+            }
         else {
             ConnectToDatabase.OpenConnection();
             ConnectToDatabase.Add(Checktext);
-            ConnectToDatabase.CloseConnection();
-            MainMenu mm = new MainMenu();
-            mm.setVisible(true);
-            this.setVisible(false);
-            //ConnectToDatabase.AddDate(Checkdate);
-            
+            ConnectToDatabase.CloseConnection();         
         }
-        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
-        {
-            
-        
-    }
+        }
+        catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled");}
+        catch(Exception e){JOptionPane.showMessageDialog(null, "Boxes need to be all filled in");}
+       
     
         
             
         
         
-        //ConnectToDatabase.OpenConnection();
+       
          // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
@@ -357,7 +340,7 @@ public class NewUser extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new NewUser().setVisible(true);
             }
         });
     }

@@ -17,6 +17,8 @@ public class Register extends javax.swing.JFrame {
 
     public List<String> Checktext;
     public List<String> Checkdate;
+    public String p;
+    public String pr;
     //public int i = 3;
     /**
      * Creates new form Register
@@ -33,7 +35,7 @@ public class Register extends javax.swing.JFrame {
     public boolean TextList(){
             
     {     
-        Checktext = new ArrayList<String>();{
+        Checktext = new ArrayList<>();{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date DOB = jDateChooserDOB.getDate();
         String realDate = sdf.format(DOB);
@@ -57,32 +59,11 @@ public class Register extends javax.swing.JFrame {
         }
         
     }
-    return false;
+    return true;
     }
     }
     }
-//     public boolean DateList()
-//    {
-//        Checkdate = new ArrayList<String>();{
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        java.util.Date DOB = jDateChooserDOB.getDate();
-//        String realDate = sdf.format(DOB);
-//        Checkdate.add(realDate);
-//        Checkdate.add(jTextFieldCreateDate.getText());
-//    for (String Check:Checkdate)
-//    {
-//        if (Check == null || Check.isEmpty()){
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-//        
-//    }
-//    return false;
-//        
-//    }
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,12 +252,21 @@ public class Register extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
-        try{
-        if (TextList() == false)
+        p = new String(jPasswordFieldPassword.getPassword());
+        pr = new String(jPasswordFieldPasswordReenter.getPassword());
+         if (p.equals(pr) == false)
         {
+           
+            JOptionPane.showMessageDialog(null, "Passwords do not match");
             return;
         }
+        try{
+            if (TextList() == false)
+            {
+                return;
+            }
         else {
+            
             ConnectToDatabase.OpenConnection();
             ConnectToDatabase.Add(Checktext);
             ConnectToDatabase.CloseConnection();
@@ -286,7 +276,8 @@ public class Register extends javax.swing.JFrame {
             //ConnectToDatabase.AddDate(Checkdate);
             
         }
-        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
+        }catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled2");}
+        catch(Exception e){JOptionPane.showMessageDialog(null, e);}
     
         
             

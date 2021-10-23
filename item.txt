@@ -1,0 +1,3 @@
+Item  Cost  Profit Margin
+Adidas 20.0 0.25
+Nike 20.0 0.25

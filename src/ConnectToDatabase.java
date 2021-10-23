@@ -25,11 +25,14 @@ public class ConnectToDatabase extends Register{
     private final static Logger lgr = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     
     public static void OpenConnection(){
-    try{
+        Logger x = ConnectToDatabase.setLogger("Connection.txt");
+        try{
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
             
-            
-        }catch(Exception e){System.out.println(e);}
+            x.log(Level.INFO, "Connection Completed");
+        }catch(Exception e) {
+            x.log(Level.WARNING, "Error connecting to Database");
+        }
     }
     public static void CloseConnection(){
     try{
@@ -39,7 +42,8 @@ public class ConnectToDatabase extends Register{
     }catch(Exception e){System.out.println(e);}
     }
     public static void Add(List<String> AddList){
-     try{
+     Logger x = ConnectToDatabase.setLogger("NewUser.txt");
+        try{
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          java.util.Date parsed = format.parse(AddList.toArray()[4].toString());
          java.sql.Date setDate = new java.sql.Date(parsed.getTime());
@@ -58,15 +62,20 @@ public class ConnectToDatabase extends Register{
          
          int rowsInserted = myStmt.executeUpdate();
          if (rowsInserted > 0){
-             JOptionPane.showMessageDialog(null, "New User Added Succesfully");
+             JOptionPane.showMessageDialog(null, "New User Added Succesfully"); 
+             x.log(Level.INFO, "New User Added Successfully");
          }
-        
          
-        
-         
-    }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
+    }
+     catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled");}
+     catch(Exception e)
+     { 
+         x.log(Level.WARNING, "Error Logging in");
+     }
 }
     public static void Login(List<String> lgList){
+        Logger x = ConnectToDatabase.setLogger("Login.txt");
+        
         try{
         String username = lgList.toArray()[0].toString();
         String password = lgList.toArray()[1].toString();
@@ -81,13 +90,15 @@ public class ConnectToDatabase extends Register{
             mm.setVisible(true);
             lg.dispose();
             lg.setVisible(false);
+            x.log(Level.INFO, "Login Connection Successful");
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
         }
         
-    }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
+    }catch(Exception e){JOptionPane.showMessageDialog(null, e);
+            x.log(Level.WARNING, "Error Logging in");}
 }
 
      public static void Update(String us, String pf, String fn, String ln, String rd, String cbut, String em, String cd){

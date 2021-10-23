@@ -146,7 +146,12 @@ public class StackDIY extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if ((jTextFieldItem1.getText().isEmpty() || jTextFieldItem2.getText().isEmpty() || jTextFieldItem3.getText().isEmpty())== true)
+        {
+            JOptionPane.showMessageDialog(null, "All boxes need to be filled");
+        }
+        else
+        {
         //ArrayList list = new ArrayList<String>();
         list = new ArrayList();
         list.add(jTextFieldItem1.getText());
@@ -160,6 +165,7 @@ public class StackDIY extends javax.swing.JFrame {
         
         
         JOptionPane.showMessageDialog(null, "There are: " + st.size() + " items in the stack"); 
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
