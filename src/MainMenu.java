@@ -38,6 +38,7 @@ public class MainMenu extends javax.swing.JFrame {
         label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main Menu");
 
         btnPoly.setText("Polymorphism and Text File Processing");
         btnPoly.addActionListener(new java.awt.event.ActionListener() {

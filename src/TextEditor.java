@@ -44,6 +44,7 @@ public class TextEditor extends javax.swing.JFrame {
         jMenuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Text Editor");
 
         jScrollPane2.setViewportView(jEditorPane1);
 

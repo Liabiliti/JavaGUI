@@ -62,6 +62,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jPasswordFieldPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login Screen");
 
         jLabel1.setText("Username");
 

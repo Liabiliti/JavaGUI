@@ -1,5 +1,6 @@
 
 
+
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -52,6 +53,7 @@ public class SearchUser extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Search Users");
 
         jLabel1.setText("Search Box");
 
@@ -148,56 +150,32 @@ public class SearchUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        
+       
+        DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+        dtModel.setRowCount(0);
+        String s = "SELECT * FROM javauserdetails";
         try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
-            ResultSet rs;
-            DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-          
-            String search = "SELECT * FROM javauserdetails"; //WHERE Username='" + username + "' and " + "EmailAddress='" + emailAddress + "';";
-            Statement myStmt = conn.createStatement();
-            rs = myStmt.executeQuery(search);
-            dtModel.setRowCount(0);
-            while (rs.next()){
-                String uid = String.valueOf(rs.getInt("UserID"));
-                String un = rs.getString("Username");
-                String pw = rs.getString("UserPassword");
-                String fn = rs.getString("FirstName");
-                String ln = rs.getString("LastName");
-                String dob = String.valueOf(rs.getDate("DOB"));
-                String ut = rs.getString("UserType");
-                String ea = rs.getString("EmailAddress");
-                String cd = String.valueOf(rs.getDate("CreateDate"));
-                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};           
-                dtModel.addRow(tabledata);
+            ConnectToDatabase.OpenConnection();
+            for (String[] x: ConnectToDatabase.Search(s)){
+            dtModel.addRow(x);//returns the list of arrays and assigns it to the table
             }
-            
-        
-            
-        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}        // TODO add your handling code here:
+            ConnectToDatabase.CloseConnection();
+        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}        
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearch1ActionPerformed
         
         
         int s = 0;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date date = new java.util.Date();
-        String current = sdf.format(date);
-        
+         DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
+         dtModel.setRowCount(0);
         try{
-            
               String SearchCriteria = jTextFieldSearchCriteria.getText();
-
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javauser", "root", "B!gB1ueBear");
-            ResultSet rs;
             if (jTextFieldSearchCriteria.getText().isEmpty() == true)
             {
                 JOptionPane.showMessageDialog(null, "The search box needs to be filled");
                 return;
             }
-            
-            //String SearchCriteria = jTextFieldSearchCriteria.getText();
             if (jComboBoxSearch.getSelectedItem().toString() == "Choose Criteria")
             {
                 JOptionPane.showMessageDialog(null, "Not an eligible search criteria");
@@ -207,7 +185,6 @@ public class SearchUser extends javax.swing.JFrame {
             {
                 s = 1;
             }
-            
             else if (jComboBoxSearch.getSelectedItem().toString() == "Last Name")
             {
                 s = 2;
@@ -222,38 +199,18 @@ public class SearchUser extends javax.swing.JFrame {
                 case 2: search = "SELECT * FROM javauserdetails WHERE LastName='" + SearchCriteria + "';";
                 break;
                 case 3: search = "SELECT * FROM javauserdetails WHERE CreateDate='" + SearchCriteria + "';";
-                //JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");
+                //Depending on the combobox selected it alters the SQL query
                 break;
             }
-            Statement myStmt = conn.createStatement();
-            rs = myStmt.executeQuery(search);
-            DefaultTableModel dtModel = (DefaultTableModel)jTableSearch.getModel();
-            dtModel.setRowCount(0);
-            while (rs.next()){
-                String uid = String.valueOf(rs.getInt("UserID"));
-                String un = rs.getString("Username");
-                String pw = rs.getString("UserPassword");
-                String fn = rs.getString("FirstName");
-                String ln = rs.getString("LastName");
-                String dob = String.valueOf(rs.getDate("DOB"));
-                String ut = rs.getString("UserType");
-                String ea = rs.getString("EmailAddress");
-                String cd = String.valueOf(rs.getDate("CreateDate"));
-                String tabledata[] = {uid, un, pw, fn, ln, dob, ut, ea, cd};
-                dtModel.addRow(tabledata);
+            ConnectToDatabase.OpenConnection();
+            for (String[] x: ConnectToDatabase.Search(search)){//Sends the query to the Search function
+            dtModel.addRow(x);//returns the list of arrays and assigns it to the table
             }
             if (dtModel.getRowCount() == 0)
             {
                 JOptionPane.showMessageDialog(null, "No entries match the Search Box input");
             }
-            
-            
-        }catch(SQLException e) {JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");}
-        
-         catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
-        // TODO add your handling code here:
-
-                                                   // TODO add your handling code here:
+        }catch(Exception e){JOptionPane.showMessageDialog(null, e);}   
     }//GEN-LAST:event_jButtonSearch1ActionPerformed
 
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed

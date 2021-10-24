@@ -96,6 +96,7 @@ public class NewUser extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("New User Form");
 
         jLabel1.setText("Username");
 

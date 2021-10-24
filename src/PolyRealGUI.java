@@ -47,8 +47,10 @@ public class PolyRealGUI extends javax.swing.JFrame {
         jTextArea = new javax.swing.JTextArea();
         jLabelItemName2 = new javax.swing.JLabel();
         jButtonReturn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Polymorphism");
 
         jLabelItemName.setText("Item Name");
 
@@ -83,6 +85,9 @@ public class PolyRealGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Polymorphism");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,15 +120,21 @@ public class PolyRealGUI extends javax.swing.JFrame {
                                 .addComponent(jButtonReturn)))
                         .addGap(0, 38, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelItemName)
                     .addComponent(jTextFieldItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelItemName1)
                     .addComponent(jTextFieldItemCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,7 +147,7 @@ public class PolyRealGUI extends javax.swing.JFrame {
                     .addComponent(jButtonWriteToFile)
                     .addComponent(jButtonReadFile)
                     .addComponent(jButtonReturn))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,6 +261,7 @@ public class PolyRealGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReadFile;
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JButton jButtonWriteToFile;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelItemName;
     private javax.swing.JLabel jLabelItemName1;
     private javax.swing.JLabel jLabelItemName2;

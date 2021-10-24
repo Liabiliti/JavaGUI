@@ -76,6 +76,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Edit or Delete User");
 
         jLabel1.setText("Username");
 
@@ -143,8 +144,8 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
             }
         });
 
-        label1.setForeground(new java.awt.Color(255, 0, 0));
-        label1.setText("Cannot Update Username");
+        label1.setForeground(new java.awt.Color(0, 0, 0));
+        label1.setText("Insert Username or Email");
 
         jLabel3.setText("OR");
 
@@ -212,9 +213,9 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel10)
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)

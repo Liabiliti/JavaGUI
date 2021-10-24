@@ -22,6 +22,8 @@ public class ConnectToDatabase extends Register{
     static Connection conn;
     static ResultSet rs;
     static String sq = new String();
+ 
+    static List<String[]> tabledata;
     private final static Logger lgr = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     
     public static void OpenConnection(){
@@ -171,6 +173,31 @@ public class ConnectToDatabase extends Register{
          }
          }catch (Exception e){JOptionPane.showMessageDialog(null, "Unable to delete, are you sure you have the right Email/Username?");}
      }
+     public static List<String[]> Search(String s)
+             {
+                 try{
+            tabledata = new ArrayList<String[]>();
+            String search = s; 
+            Statement myStmt = conn.createStatement();
+            rs = myStmt.executeQuery(search);
+            while (rs.next()){
+                String uid = String.valueOf(rs.getInt("UserID"));
+                String un = rs.getString("Username");
+                String pw = rs.getString("UserPassword");
+                String fn = rs.getString("FirstName");
+                String ln = rs.getString("LastName");
+                String dob = String.valueOf(rs.getDate("DOB"));
+                String ut = rs.getString("UserType");
+                String ea = rs.getString("EmailAddress");
+                String cd = String.valueOf(rs.getDate("CreateDate"));
+                String [] tabledate = new String[] {uid, un, pw, fn, ln, dob, ut, ea, cd}; 
+                tabledata.add(tabledate);//Creates a list of arrays
+            } 
+               }catch(SQLException e) {JOptionPane.showMessageDialog(null, "The format for create date is: yyyy-MM-dd");}
+                catch(Exception e){JOptionPane.showMessageDialog(null, e);}
+                return tabledata;//Returns a list of arrays to be sent back to the form
+            }
+     
      public static Logger setLogger (String FileName)
      {
          LogManager.getLogManager().reset();
