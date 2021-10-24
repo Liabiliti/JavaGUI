@@ -29,10 +29,7 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
     public String cbut;
     
     
-    //public int i = 3;
-    /**
-     * Creates new form Register
-     */
+  
     
     public UpdateDeleteUser() {
         initComponents();
@@ -277,14 +274,12 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
         rd = realDate;
         cbut = jComboBoxUserType.getSelectedItem().toString();
         em = jTextFieldEmail.getText();
-        cd = jTextFieldCreateDate.getText();
+        cd = jTextFieldCreateDate.getText(); //assigns string values to the user inputs
         
-            ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Update(un, pf, fn, ln, rd, cbut, em, cd);
-            ConnectToDatabase.CloseConnection();
-        //}catch(Exception e){JOptionPane.showMessageDialog(null, "Here");}
-        //ConnectToDatabase.OpenConnection();
-         // TODO add your handling code here:
+            ConnectToDatabase.OpenConnection();//opens connection
+            ConnectToDatabase.Update(un, pf, fn, ln, rd, cbut, em, cd); //send the string values into the update function
+            ConnectToDatabase.CloseConnection();//closes connection
+        
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
@@ -315,11 +310,11 @@ public class UpdateDeleteUser extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
      Username = jTextFieldUsername1.getText();
-     Email = jTextFieldEmail.getText();
+     Email = jTextFieldEmail.getText();//assigns email and username inputs string values
         try{
-            ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Delete(Username, Email);
-            ConnectToDatabase.CloseConnection();
+            ConnectToDatabase.OpenConnection();//opens connection
+            ConnectToDatabase.Delete(Username, Email);//sends string values to delete function
+            ConnectToDatabase.CloseConnection();//closes connection
         
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
         

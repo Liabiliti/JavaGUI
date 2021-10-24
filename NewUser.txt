@@ -2,14 +2,14 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-10-24T08:50:27</date>
-  <millis>1635025827543</millis>
+  <date>2021-10-24T10:02:12</date>
+  <millis>1635030132018</millis>
   <sequence>1</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>ConnectToDatabase</class>
   <method>Add</method>
-  <thread>15</thread>
+  <thread>16</thread>
   <message>New User Added Successfully</message>
 </record>
 </log>

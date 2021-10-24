@@ -57,7 +57,7 @@ public class Register extends javax.swing.JFrame {
         else{
             return true;
         }
-        
+        //Creates a list of strings with the input provided in the GUI form
     }
     return true;
     }
@@ -254,26 +254,26 @@ public class Register extends javax.swing.JFrame {
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         p = new String(jPasswordFieldPassword.getPassword());
         pr = new String(jPasswordFieldPasswordReenter.getPassword());
-         if (p.equals(pr) == false)
+         if (p.equals(pr) == false)//If the password and reenterpassword inputs do not match, the programme will not continue
         {
            
             JOptionPane.showMessageDialog(null, "Passwords do not match");
             return;
         }
         try{
-            if (TextList() == false)
+            if (TextList() == false)//If the list is false then the inputs have been added successfully to the list
             {
                 return;
             }
         else {
             
-            ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Add(Checktext);
-            ConnectToDatabase.CloseConnection();
+            ConnectToDatabase.OpenConnection();//Opens Connection
+            ConnectToDatabase.Add(Checktext);//Sends list to Add function 
+            ConnectToDatabase.CloseConnection();//closes connection
             LoginScreen lg = new LoginScreen();
             lg.setVisible(true);
             this.setVisible(false);
-            //ConnectToDatabase.AddDate(Checkdate);
+           
             
         }
         }catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled2");}
@@ -283,8 +283,7 @@ public class Register extends javax.swing.JFrame {
             
         
         
-        //ConnectToDatabase.OpenConnection();
-         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
@@ -309,7 +308,7 @@ public class Register extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat();
         java.util.Date date = new java.util.Date();
         String current = sdf.format(date);
-        jTextFieldCreateDate.setText(current);
+        jTextFieldCreateDate.setText(current);//Sets the create date field to the current date
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCreateDateActionPerformed
 

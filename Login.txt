@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-10-24T08:55:35</date>
-  <millis>1635026135838</millis>
-  <sequence>3</sequence>
+  <date>2021-10-24T10:06:38</date>
+  <millis>1635030398787</millis>
+  <sequence>1</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>ConnectToDatabase</class>
@@ -12,3 +12,4 @@
   <thread>15</thread>
   <message>Login Connection Successful</message>
 </record>
+</log>

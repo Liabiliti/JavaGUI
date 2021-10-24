@@ -162,13 +162,13 @@ public class PolyRealGUI extends javax.swing.JFrame {
                 Item it = new Item(s, f);
                 it.setProfitMargin();
                 items.add(it);
-            }
+            }//If statements allows for polymorphism to be used to create an object with a name and with or without a cost
                 JOptionPane.showMessageDialog(null, items.toString());
                 
             
             for (Item x : items)
             {         
-                 output.println(x.toString().replaceAll(";", " "));  
+                 output.println(x.toString().replaceAll(";", " "));  //Makes the text sent to the file more readable
             }
             output.close();
             
@@ -193,7 +193,7 @@ public class PolyRealGUI extends javax.swing.JFrame {
             jTextArea.read(br, null);
             br.close();
             jTextArea.requestFocus();
-                    
+                    //Reads the text file into a TextArea
                  
         } catch (FileNotFoundException fe) {
             JOptionPane.showMessageDialog(null, "Cannot find file: " + fileName);

@@ -24,10 +24,9 @@ public class WorkWithImages extends javax.swing.JFrame {
     ImageIcon imageLeopard = new ImageIcon(new ImageIcon("leopard.png").getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
     ImageIcon imagePanda = new ImageIcon(new ImageIcon("panda.jpg").getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
     ImageIcon imageTiger = new ImageIcon(new ImageIcon("tiger.jpg").getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
-    ImageIcon imageKiwi = new ImageIcon(new ImageIcon("kiwibird.png").getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
-    /**
-     * Creates new form WorkWithImages
-     */
+    ImageIcon imageKiwi = new ImageIcon(new ImageIcon("kiwibird.png").getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));//Creates an image Icon with selected images within the javaGUI project
+    //Also sets them to a specific format
+    
     public WorkWithImages() {
         initComponents();
     }
@@ -139,7 +138,7 @@ public class WorkWithImages extends javax.swing.JFrame {
         {
             jLabelPic1.setIcon(imageNewZealand);
             jLabelPic2.setIcon(imageKiwi);
-        }
+        }//If the country name is selected via the combobox and then the pictures button is pressed the countries flag/map and national animal will appear on the screen
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTestActionPerformed

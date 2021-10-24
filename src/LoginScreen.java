@@ -41,7 +41,7 @@ public class LoginScreen extends javax.swing.JFrame {
         
     }
         return false;
-    }
+    }//This code adds text entered into the password and username fields to be added to a list
     
     }
     /**
@@ -147,30 +147,25 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try{ 
-            FileHandler Fh = new FileHandler("Login.txt");
-            Fh.setLevel(Level.ALL);
-            x.addHandler(Fh);
-            
-            
         if ((jTextFieldUsername.getText().isEmpty())  || (jPasswordFieldPassword.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Both Username and Password must be filled");
-            return;
+            return; //The boxes must be filled in to login
         }
         else{
           
-            if (TextList()==false)
+            if (TextList()==false) //If the textlist value equals false (meaning there is a list) it will continue through the program
             {
                 return;
             }
             else
             {
-            ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Login(loginList);
-            ConnectToDatabase.CloseConnection();
+            ConnectToDatabase.OpenConnection();//Opens connection
+            ConnectToDatabase.Login(loginList);//runs list through login function
+            ConnectToDatabase.CloseConnection();//closes function
             
             }
-        }x.log(Level.INFO, "Login Logged");
+        }
        
         this.setVisible(false);
         

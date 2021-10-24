@@ -134,7 +134,7 @@ public class PolyExample extends javax.swing.JFrame {
         float f = Float.parseFloat(jTextFieldCost.getText());
         itemObject = new Item(jTextFieldName.getText(),f);
         itemObject.setProfitMargin();
-    }
+    }//If statements allows for polymorphism to be used to create an object with a name and with or without a cost
         
         FileOutputStream output = null;
         ObjectOutputStream objOutput = null;
@@ -145,7 +145,7 @@ public class PolyExample extends javax.swing.JFrame {
             output.close();
             objOutput.close();
             JOptionPane.showMessageDialog(null, "Message sent to file");
-        }
+        }//Serializes the input to a .ser file where it will be serialized
         catch(Exception e)
         {
             System.out.println("Exception:"+e.getMessage());
@@ -164,7 +164,7 @@ public class PolyExample extends javax.swing.JFrame {
             itm = (Item)objInfile.readObject();
 
             JOptionPane.showMessageDialog(null, "Item name: " + itm.getItemName() + "\n Item cost: " + itm.getItemCost() + "\n Item profit margin: " + itm.getProfitMargin());
-        }
+        }//Deserializes .ser file and sends a message with what was in the file.
         catch(IOException e)
         {
             System.out.println("Exception:"+e.getMessage());

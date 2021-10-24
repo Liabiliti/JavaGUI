@@ -162,27 +162,27 @@ public class TextEditor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCutActionPerformed
-    jEditorPane1.cut();        // TODO add your handling code here:
+    jEditorPane1.cut();   //Performs the cut text function     
     }//GEN-LAST:event_jMenuItemCutActionPerformed
 
     private void jMenuItemCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCopyActionPerformed
-    jEditorPane1.copy();        // TODO add your handling code here:
+    jEditorPane1.copy();    //Performs the copy text function    
     }//GEN-LAST:event_jMenuItemCopyActionPerformed
 
     private void jMenuItemPasteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPasteActionPerformed
-    jEditorPane1.paste();        // TODO add your handling code here:
+    jEditorPane1.paste();    //Performs the paste text function
     }//GEN-LAST:event_jMenuItemPasteActionPerformed
 
     private void jMenuItemOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
+        String filename = f.getAbsolutePath();//Open function that allows the user to select a file they wish to enter in the text area
         filePath = f.getAbsolutePath();
         try {
             FileReader reader = new FileReader(filename);
             BufferedReader br = new BufferedReader(reader);
-            jEditorPane1.read(br, null);
+            jEditorPane1.read(br, null);//reads the selected file into the text area
             
             br.close();
             jEditorPane1.requestFocus();
@@ -205,10 +205,10 @@ public class TextEditor extends javax.swing.JFrame {
     private void jMenuItemSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSaveAsActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showSaveDialog(this);
-        File f = new File(chooser.getSelectedFile()+".rtf");
+        File f = new File(chooser.getSelectedFile()+".rtf");//Allows the user to save the file as an .rtf file
         try{
         FileWriter fw = new FileWriter(f);
-        String fileSaveName = jEditorPane1.getText();
+        String fileSaveName = jEditorPane1.getText();//Takes the content of the textarea and saves it to a file
         fw.write(fileSaveName);
         fw.close();
         }catch (Exception e) {
@@ -230,14 +230,14 @@ public class TextEditor extends javax.swing.JFrame {
         FileWriter fw = new FileWriter(f);
         String fileSaveName = jEditorPane1.getText();
         fw.write(fileSaveName);
-        fw.close();
+        fw.close();//if this is a new file it will give the user a chance to save their work 
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error was: " + e);
         }
            }
            else if (result == JOptionPane.NO_OPTION)
            {
-               jEditorPane1.setText("");
+               jEditorPane1.setText("");//if they do not want to save their work, the text area will be emptied
            }
 
 
@@ -252,7 +252,7 @@ public class TextEditor extends javax.swing.JFrame {
              String fileSave = jEditorPane1.getText();
              bw.write(fileSave);
              bw.newLine();
-             bw.close();
+             bw.close();//overrides the file with information from text area
              
          }catch (Exception e) {
              JOptionPane.showMessageDialog(null, "This is the first time you are saving this document, you will need to use the Save As tool");
@@ -265,7 +265,7 @@ public class TextEditor extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "This is a Text Editor which allows you to: \n New: This opens a new text editor \n Open: This allows you to open previous files created in text editor \n Save: This allows you to save an already existing file "
                 + "\n Save As: This will allow you to save a new text file \n Cut: This allows you to copy and delete text at the same time \n Copy: This allows you to copy text \n Paste: This allows you to paste the text you copied");
 
-
+//help information
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
 

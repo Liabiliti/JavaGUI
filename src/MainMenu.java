@@ -160,55 +160,53 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
     NewUser nu = new NewUser();
     nu.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);
     }//GEN-LAST:event_btnNewUserActionPerformed
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
     SearchUser su = new SearchUser();
     su.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-    System.exit(0);        // TODO add your handling code here:
+    System.exit(0);        
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnEditDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDeleteUserActionPerformed
     UpdateDeleteUser udu = new UpdateDeleteUser();
     udu.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);
     }//GEN-LAST:event_btnEditDeleteUserActionPerformed
 
     private void btnWorkingWithDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkingWithDataActionPerformed
     StackDIY stDIY = new StackDIY();
     stDIY.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);
     }//GEN-LAST:event_btnWorkingWithDataActionPerformed
 
     private void btnFileProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileProcessingActionPerformed
     WorkWithImages ww = new WorkWithImages();
     ww.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);
     }//GEN-LAST:event_btnFileProcessingActionPerformed
 
     private void btnPolyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPolyActionPerformed
         PolyRealGUI prg = new PolyRealGUI();
         prg.setVisible(true);
         this.setVisible(false);
-// TODO add your handling code here:
     }//GEN-LAST:event_btnPolyActionPerformed
 
     private void btnSerializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerializationActionPerformed
         PolyExample pe = new PolyExample();
         pe.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);        
     }//GEN-LAST:event_btnSerializationActionPerformed
 
     private void btnTextEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTextEditorActionPerformed
     TextEditor te = new TextEditor();
     te.setVisible(true);
     this.setVisible(false);
-    // TODO add your handling code here:
     }//GEN-LAST:event_btnTextEditorActionPerformed
 
     /**

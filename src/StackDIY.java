@@ -16,7 +16,7 @@ public class StackDIY extends javax.swing.JFrame {
     static void showpush(Object s)
     {
         try{
-        st.push(s);
+        st.push(s);//Function for pushing input into stack
       }catch (EmptyStackException e) {
       
       }
@@ -25,7 +25,7 @@ public class StackDIY extends javax.swing.JFrame {
     {
         try{
        
-       st.pop();
+       st.pop();//Function for popping the stack
        }catch (EmptyStackException e) {
         
        }
@@ -156,10 +156,10 @@ public class StackDIY extends javax.swing.JFrame {
         list = new ArrayList();
         list.add(jTextFieldItem1.getText());
         list.add(jTextFieldItem2.getText());
-        list.add(jTextFieldItem3.getText());
+        list.add(jTextFieldItem3.getText());//Adds user input into an arrayList
         for (Object s : list)
         {
-            showpush(s);
+            showpush(s);//pushes each input into a stack
             JOptionPane.showMessageDialog(null, s + " was added to the stack");
         }
         
@@ -174,7 +174,7 @@ public class StackDIY extends javax.swing.JFrame {
         while (st.size() != 0)
         {
             JOptionPane.showMessageDialog(null, st.peek() + " was removed from the stack");
-            showpop(st);
+            showpop(st);//pushes out each item of the stack in the order it was inserted
         }
         if (st.isEmpty())
         {

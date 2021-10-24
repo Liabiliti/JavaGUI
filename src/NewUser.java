@@ -56,7 +56,7 @@ public class NewUser extends javax.swing.JFrame {
         else{
             return true;
         }
-        
+        //Creates a list of strings with the input provided in the GUI form
     }
     return false;
     }
@@ -253,7 +253,7 @@ public class NewUser extends javax.swing.JFrame {
    
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         String p = new String(jPasswordFieldPassword.getPassword());
-        String pr = new String(jPasswordFieldPasswordReenter.getPassword());
+        String pr = new String(jPasswordFieldPasswordReenter.getPassword());//If the password and reenterpassword inputs do not match, the programme will not continue
         if (p.equals(pr) == false)
         {
             
@@ -261,17 +261,17 @@ public class NewUser extends javax.swing.JFrame {
             return;
         }
         try{
-             if (TextList() == false)
+             if (TextList() == false)//If the list is false then the inputs have been added successfully to the list
             {
                 return;
             }
         else {
-            ConnectToDatabase.OpenConnection();
-            ConnectToDatabase.Add(Checktext);
-            ConnectToDatabase.CloseConnection();         
+            ConnectToDatabase.OpenConnection();//opens connection
+            ConnectToDatabase.Add(Checktext);//send the list to the add function
+            ConnectToDatabase.CloseConnection();//closes connection
         }
         }
-        catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled");}
+        catch (NullPointerException e) {JOptionPane.showMessageDialog(null, "All boxes must be filled");}//catches errors
         catch(Exception e){JOptionPane.showMessageDialog(null, "Boxes need to be all filled in");}
        
     
@@ -305,7 +305,7 @@ public class NewUser extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat();
         java.util.Date date = new java.util.Date();
         String current = sdf.format(date);
-        jTextFieldCreateDate.setText(current);
+        jTextFieldCreateDate.setText(current);//Sets the create date field to the current date
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCreateDateActionPerformed
 

@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-10-24T08:55:34</date>
-  <millis>1635026134477</millis>
-  <sequence>2</sequence>
+  <date>2021-10-24T10:06:37</date>
+  <millis>1635030397041</millis>
+  <sequence>0</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>ConnectToDatabase</class>

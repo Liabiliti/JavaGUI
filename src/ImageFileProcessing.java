@@ -100,9 +100,7 @@ public class ImageFileProcessing extends javax.swing.JFrame {
         out.writeObject(jTextArea1.getText());
         out.close();
         fileOut.close();
-//        BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Nicholas\\OneDrive\\Documents\\NetBeansProjects\\JavaGUI\\Text.txt"));
-//        bw.write(jTextArea1.getText().toString());
-//        bw.close();
+
         JOptionPane.showMessageDialog(null, "Message has been sent to Text File.");
         jTextArea1.setText(" ");
     }catch(Exception e){
